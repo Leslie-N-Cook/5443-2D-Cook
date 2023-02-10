@@ -1,0 +1,9 @@
+Interface==2.11.1
+pygame==2.1.2
+pygame-gui==0.6.8
+PySimpleGUI==4.60.4
+python-i18n==0.3.9
+tk==0.1.0
+zope.event==4.6
+zope.interface==5.5.2
+zope.schema==7.0.1
