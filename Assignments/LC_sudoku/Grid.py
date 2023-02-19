@@ -2,7 +2,7 @@ from random import randint
 """
 class Grid 
      builds a 9x9 grid layout in the pygame window
-     fills the grid with randomly generated numbers for the sudoku game
+     fills the grid with randomly generated values 1-9 for the sudoku game
      
 functions within in the Grid class:
     
@@ -46,23 +46,23 @@ class Grid:
 
     def build_grid(self):
         self.fill_tiles()
-        self.delete_items(32)
+        self.delete_items(1) # sets the number of tiles to leave blank
 
     def fill_tiles(self):
         tag = [False for _ in range(9)]
         blank = self.find_blank()
-
         if blank is None:
             return True
-
         row, col = blank[0], blank[1]
         while True:
             num = randint(1,9)
             tag[num - 1] = True
+            
             if self.OK_to_fill(row, col, num):
                 self.grid[row][col] = num
                 if self.fill_tiles():
                     return True
+                
                 self.grid[row][col] = 0
             
             if tag.count(True) == 9:
@@ -80,18 +80,14 @@ class Grid:
 
     def solve(self):
         blank = self.find_blank()
-
         if blank is None:
             return True
-
         row, col = blank[0], blank[1]
-
         for num in range(1,10):
             if self.OK_to_fill(row, col, num):
                 self.grid[row][col] = num
                 if self.solve():
                     return True
-
                 self.grid[row][col] = 0
         return False
 
