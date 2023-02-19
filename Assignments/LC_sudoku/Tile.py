@@ -24,7 +24,7 @@ class Tile:
     col = 9
     GRAY = (128, 128, 128)
     BLACK = (0, 0, 0)
-    RED = (255, 0, 0)
+    GREEN = (10, 246, 165)
     WHITE = (255, 255, 255)
 
     def __init__(self, value, row, col, width, height):
@@ -53,8 +53,8 @@ class Tile:
             box.blit(text, (x + (space / 2 - text.get_width() / 2), y + (space / 2 - text.get_height() / 2)))
             
         if self.selected:
-            # draws a red rectangle around the selected tile
-            pygame.draw.rect(box, self.RED, (x, y, space, space), 3)
+            # draws a rectangle around the selected tile
+            pygame.draw.rect(box, self.GREEN, (x, y, space, space), 3)
             
     def set(self, value):
         self.value = value
