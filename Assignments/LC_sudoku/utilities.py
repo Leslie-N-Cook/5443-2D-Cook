@@ -7,6 +7,14 @@ def set_time(sec):
     current_time = str(minutes) + ":" + (str(seconds) if seconds > 9 else "0" + str(seconds))
     return current_time
 
+def background_music():
+    pygame.mixer.music.load('music/lofi_falling.mp3')
+    pygame.mixer.music.play(-1)
+
+def win_sound():
+    pygame.mixer.music.load('music/congratulations-post-malone.mp3')
+    pygame.mixer.music.play(0)
+
 def get_key(key):
     switcher = {
         pygame.K_1: 1,
