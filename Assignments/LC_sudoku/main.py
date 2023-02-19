@@ -17,6 +17,7 @@ def end_game(gameTime):
     image.show()
     image.save(f"popup.png")
     
+    
 
 def draw_screen(window, grid, time):
     window.fill((0, 0, 0))
@@ -37,9 +38,9 @@ def draw_screen(window, grid, time):
     text = font.render("GAME PLAY", 1, (255, 0, 255))
     window.blit(text, (540+150,245))
     font = pygame.font.Font("fonts/Futura.ttf", 18)
-    text = font.render("Select the box to play a value", 1, (127, 0, 255))
+    text = font.render("Select the display to play a value", 1, (127, 0, 255))
     window.blit(text, (540+30,280))
-    text = font.render("Press ENTER to set the value in the box", 1, (0, 0, 255))
+    text = font.render("Press ENTER to set the value in the display", 1, (0, 0, 255))
     window.blit(text, (540+30,300))
     text = font.render("Press BACKSPACE to remove the value and try again", 1, (0, 127,255))
     window.blit(text, (540+30,320))
@@ -47,11 +48,13 @@ def draw_screen(window, grid, time):
     grid.draw(window)
 
 pygame.init()
+
+#add background music to game
 pygame.mixer.init()
 pygame.mixer.music.load('music/relax-chill-out.mp3')
 pygame.mixer.music.play(-1)
 
-box = pygame.display.set_mode((1050, 545))
+display = pygame.display.set_mode((1050, 545))
 pygame.display.set_caption("SUDOKU 4 U")
 
 grid = Play(540, 540)
@@ -77,10 +80,13 @@ while running:
                 if grid.check_blank_tile() is False and grid.check_solution() is True:
                     gameTime = utilities.set_time(current_time) 
                     end_game(gameTime)
-                    utilities.set_time(0)
-                    #start = time.time()
-                    #grid = Play(540, 540)
-                    #pressed = None
+                    
+                    pygame.time.wait(5000) # tell game to wait 5 seconds before reset
+                    # this will automatically setup a new game 
+                    current_time = 0
+                    start = time.time()
+                    grid = Play(540, 540)
+                    pressed = None
         
         if e.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
@@ -94,7 +100,7 @@ while running:
     if grid.selected and pressed is not None:
             grid.temp_location(pressed)
         
-    draw_screen(box, grid, current_time)
+    draw_screen(display, grid, current_time)
     pygame.display.update()
 
 
