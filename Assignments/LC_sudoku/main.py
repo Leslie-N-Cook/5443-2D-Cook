@@ -13,17 +13,16 @@ def end_game(gameTime):
         {"text":"  ",'font_size':20,'align':'center','color':'white'},
         {"text":f"       You Finished in: {gameTime}",'font_size':20,'align':'left','color':'red'},
     ]
-    image = utilities.makePopUp(content,border_size=20,border_color='white',fill_color='black',width=600,height=275)
+    image = utilities.makePopUp(content,border_size=10,border_color='white',fill_color='black',width=600,height=300)
     image.show()
     image.save(f"popup.png")
+    
 
 def draw_screen(window, grid, time):
     window.fill((0, 0, 0))
     font = pygame.font.Font("fonts/Futura.ttf", 32)
     text = font.render("Clock " + utilities.set_time(time), 1,(0,255,255))
     window.blit(text, (680, 400))
-    # text = font.render("Quit", 1, (128, 128, 128))
-    # window.blit(text, (900, 445))
     font = pygame.font.Font("fonts/Futura.ttf", 28)
     text = font.render("SUDOKU RULES", 1, (255, 255, 0))
     window.blit(text, (540+130,100))
@@ -48,6 +47,9 @@ def draw_screen(window, grid, time):
     grid.draw(window)
 
 pygame.init()
+pygame.mixer.init()
+pygame.mixer.music.load('music/relax-chill-out.mp3')
+pygame.mixer.music.play(-1)
 
 box = pygame.display.set_mode((1050, 545))
 pygame.display.set_caption("SUDOKU 4 U")
@@ -75,9 +77,10 @@ while running:
                 if grid.check_blank_tile() is False and grid.check_solution() is True:
                     gameTime = utilities.set_time(current_time) 
                     end_game(gameTime)
-                    start = time.time()
-                    grid = Play(540, 540)
-                    pressed = None
+                    utilities.set_time(0)
+                    #start = time.time()
+                    #grid = Play(540, 540)
+                    #pressed = None
         
         if e.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
