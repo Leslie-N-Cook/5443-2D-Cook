@@ -36,7 +36,8 @@ functions within the Play class :
 
 class Play:
     def __init__(self, width, height):
-        self.grid = Grid()
+        
+        self.grid = Grid() #call Grid class 
         self.row = 9
         self.col = 9
         self.tiles = [[Tile(self.grid.grid[i][j], i, j, width, height) for j in range(9)] for i in range(9)]
@@ -56,7 +57,7 @@ class Play:
         space = self.width / 9 
         for i in range(self.row + 1):
             if i % 3 == 0 and i != 0:
-                thick = 2
+                thick = 3
             else:
                 thick = 1
             pygame.draw.line(box, (255, 255, 255), (0, i * space), (self.width, i * space), thick)
@@ -76,30 +77,27 @@ class Play:
         
     def clear(self):
         row, col = self.selected
-        
         self.tiles[row][col].set(0)
         self.tiles[row][col].set_temp(0)
         
     def click(self, position):
-        if position[0] <= 60 and position[1] >= 540:
-            help_str = "Choose a number 1 - 9 to place on the Sudoku grid\n" \
-                        "Press ENTER to play number\n" \
-                        "BACKSPACE to remove the number"
-            utilities.display_messageBox(help_str, "Help message")
-        elif position[0] < self.width and position[1] < self.height:
+        if position[0] < self.width and position[1] < self.height:
             space = self.width / 9
             x = position[0] // space
             y = position[1] // space
-            print(x,y)
+            # print(x,y)
             return (y, x)
         else:
             return None
     
     def check_blank_tile(self):
+        #self.grid.find_blank()
         for i in range(9):
             for j in range(9):
                 if self.tiles[i][j] == 0:
+                    #print("blank T")
                     return True
+        #print("blank F")        
         return False
     
     def check_solution(self):
@@ -107,6 +105,8 @@ class Play:
         for i in range(9):
             for j in range(9):
                 if self.grid.grid[i][j] == self.tiles[i][j].value:
+                    #print("solve T")
                     return True
+        #print("solve F")        
         return False        
     
