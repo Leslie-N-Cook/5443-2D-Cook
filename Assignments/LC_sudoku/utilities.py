@@ -1,5 +1,5 @@
 import pygame
-import PySimpleGUI as sg
+from PIL import Image, ImageDraw, ImageFont
 
 def set_time(sec):
     seconds = sec % 60
@@ -21,24 +21,97 @@ def get_key(key):
     }
     return switcher.get(key, None)
 
-def display_messageBox(body, title):
-    sg.theme('DarkAmber')   # Add a touch of color
-    # All the stuff inside your window.
-    layout = [  [sg.Text('Some text on Row 1')],
-                [sg.Text('Enter something on Row 2'), sg.InputText()],
-                [sg.Button('Ok'), sg.Button('Cancel')] ]
+def get_font_size(text, font_name, pixel_size):
+    """This returns the "font size" necessary to fit a letter in an image
+    of a given pixel size. Different letters have different widths and
+    heights.
+    Params:
+        text (str) : string to test
+        font_name (str) : font to open
+        pixel_size (int) : height of image
+    Returns:
+        font_size (int), font width (int) , font_height (int)
+    """
+    font_size = 20
+    h = 0
+    while h < pixel_size:
+        font = ImageFont.truetype(font_name, font_size)
+        w, h = font.getbbox(text)
+        font_size += 2
+    return font_size, w, h
 
-    # Create the Window
-    window = sg.Window('Window Title', layout)
-    # Event Loop to process "events" and get the "values" of the inputs
-    while True:
-        event, values = window.read()
-        if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
-            break
-        print('You entered ', values[0])
+def makePopUp(content,**kwargs):
 
-    window.close()
+    width = kwargs.get("width", 300)
+    height = kwargs.get("height", 300)
+    fill_color = kwargs.get("fill_color", "white")
+    border_size = kwargs.get("border_size", 5)
+    border_color = kwargs.get("border_color", "black")
+    border_radius = kwargs.get("border_radius", 7)
+    font_size = kwargs.get("font_size", 20)
+    font_name = kwargs.get("font_name", "fonts/Futura.ttf")
+    image = Image.new("RGBA", (width,height))  # A 0-1
 
-if __name__=='__main__':
+    draw = ImageDraw.Draw(image)
+    draw.rounded_rectangle(
+        (0, 0, width, height),
+        fill=fill_color,
+        outline=border_color,
+        width=border_size,
+        radius=border_radius,
+    )
+    # # use the tile width and font width to center the letter. Same with the height.
+    # # the 1.30 is to shift the letter up a little bit. Not sure what will happen with a different font
+    i = 0
+    y = border_size
+    totFontHeight = 0
+    for line in content:
+        # if not 'font_size' in line:
+        #     line['font_size'] = font_size
+        # print(font_size)
+        if not 'align' in line:
+            align="center"
+        
+        if not line['align']:
+            line['align'] = "left"
+
+        if not 'font_name' in line:
+            line['font_name'] = font_name
+
+        #font_size, font_width, font_height = get_font_size(line['text'], line['font_name'], line['font_size'])
+        font = ImageFont.truetype(line['font_name'], size=line['font_size'])
+        
+        if not 'color' in line:
+            color = "black"
+        else:
+            color = line['color']     
+        
+        x = border_size
+        
+        if line['align'] == 'center':
+            x = ((width // 2) - (line['font_size'] // 2))
+            #x = width // 2
+        elif line['align'] == 'right':
+            x = border_size + width - line['font_size']
+        draw.text((x,y),line['text'],font=font,fill=color,align='left')
+        y += line['font_size'] + line['font_size'] // 2 + 5
+        i += 1
+
+    return image
     
-    display_messageBox("hello world",'title')
+    
+## TEST POP UP ##
+if __name__=='__main__':
+    content = [
+        {"text":" ",'font_size':20,'align':'left','color':'white'},
+        {"text":" ",'font_size':20,'align':'center','color':'white'},
+        {"text":" SUDOKU SOLVED! ",'font_size':60,'align':'left','color':'red'},
+        {"text":"  ",'font_size':20,'align':'center','color':'white'},
+        {"text":"   You Finished in: 15:32   ",'font_size':20,'align':'left','color':'red'},
+       
+    ]
+    image = makePopUp(content,border_size=20,border_color='white',fill_color='black',width=600,height=275)
+    image.show()
+    image.save(f"popup.png")
+
+
