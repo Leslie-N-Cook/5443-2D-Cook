@@ -107,6 +107,6 @@ class Play:
         for i in range(9):
             for j in range(9):
                 if self.grid.grid[i][j] == self.tiles[i][j].value:
-                    return False
-        return True        
+                    return True
+        return False        
     
