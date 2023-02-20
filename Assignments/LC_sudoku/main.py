@@ -78,7 +78,7 @@ while running:
             elif e.key == pygame.K_RETURN:
                 x, y = grid.selected
                 grid.location(pressed)
-                if grid.check_blank_tile() is False and grid.check_solution() is True:
+                if grid.check_blank_tile() is False and grid.check_solution() is False:
                     gameTime = utilities.set_time(current_time) 
                     end_game(gameTime)
                     pygame.mixer.music.pause()
@@ -111,4 +111,4 @@ while running:
 
 pygame.quit()
             
-                    
+    
