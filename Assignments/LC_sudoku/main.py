@@ -17,8 +17,6 @@ def end_game(gameTime):
     image.show()
     image.save(f"popup.png")
     
-    
-
 def draw_screen(window, grid, time):
     window.fill((0, 0, 0))
     font = pygame.font.Font("fonts/Futura.ttf", 32)
