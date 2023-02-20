@@ -43,15 +43,16 @@ def draw_screen(window, grid, time):
     text = font.render("Press ENTER to set the value in the display", 1, (0, 0, 255))
     window.blit(text, (540+30,300))
     text = font.render("Press BACKSPACE to remove the value and try again", 1, (0, 127,255))
-    window.blit(text, (540+30,320))
-                       
+    window.blit(text, (540+30,320))       
     grid.draw(window)
-
+    
+    
+#initialize pygame module
 pygame.init()
 
 #add background music to game
 pygame.mixer.init()
-pygame.mixer.music.load('music/relax-chill-out.mp3')
+pygame.mixer.music.load('music/lofi_falling.mp3')
 pygame.mixer.music.play(-1)
 
 display = pygame.display.set_mode((1050, 545))
@@ -80,9 +81,13 @@ while running:
                 if grid.check_blank_tile() is False and grid.check_solution() is True:
                     gameTime = utilities.set_time(current_time) 
                     end_game(gameTime)
-                    
-                    pygame.time.wait(5000) # tell game to wait 5 seconds before reset
-                    # this will automatically setup a new game 
+                    pygame.mixer.music.pause()
+                    utilities.win_sound()
+                    # tell game to wait 10 seconds before reset
+                    pygame.time.wait(10000)
+                    # this will automatically setup a new game
+                    #pygame.mixer.music.unpause() 
+                    utilities.background_music()
                     current_time = 0
                     start = time.time()
                     grid = Play(540, 540)
