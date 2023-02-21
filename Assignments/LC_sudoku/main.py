@@ -10,7 +10,7 @@ import sys
 import time
 import utilities
 from Play import Play
-from Grid import Grid
+
 
 """
 funtions in main.py :
@@ -114,9 +114,10 @@ while running:
                 if play.check_blank_tile() is False and play.check_solution() is True:
                     pygame.mixer.Channel(0).set_volume(0.15)
                     pygame.mixer.Channel(0).play(pygame.mixer.Sound('music/success-chime.mp3'))
-                # else:
-                #     pygame.mixer.Channel(1).set_volume(0.2)
-                #     pygame.mixer.Channel(1).play(pygame.mixer.Sound('music/f-cked-up_.mp3'))
+                    print(x,y,pressed)
+                    if not play.check_correct(x,y,pressed):
+                        pygame.mixer.Channel(1).set_volume(0.5)
+                        pygame.mixer.Channel(1).play(pygame.mixer.Sound('music/f-cked-up_.mp3'))
                     
                 # when you've solved the game correctly
                 if play.check_blank_tile() is False and play.check_solution() is False:
