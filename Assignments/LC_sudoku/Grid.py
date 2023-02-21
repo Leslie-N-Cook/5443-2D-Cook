@@ -47,7 +47,7 @@ class Grid:
     def build_grid(self):
         self.fill_tiles()
         # sets the number of tiles to leave blank
-        self.delete_items(2)
+        self.delete_items(32)
 
     def fill_tiles(self):
         tag = [False for _ in range(9)]
