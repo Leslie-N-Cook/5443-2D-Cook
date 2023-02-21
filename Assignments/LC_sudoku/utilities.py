@@ -1,21 +1,33 @@
 import pygame
 from PIL import Image, ImageDraw, ImageFont
+'''
+functions in utilities :
 
-def set_time(sec):
-    seconds = sec % 60
-    minutes = sec // 60
-    current_time = str(minutes) + ":" + (str(seconds) if seconds > 9 else "0" + str(seconds))
-    return current_time
+    def get_key() :
+        switch case function
+        creates dictionary of 1-9 values from the keyboard input
 
-def background_music():
-    pygame.mixer.music.load('music/lofi_falling.mp3')
-    pygame.mixer.music.play(-1)
+     def set_time() : 
+        takes in seconds converts to minutes
+        returns the current time in (min):(sec) format
 
-def win_sound():
-    pygame.mixer.music.load('music/congratulations-post-malone.mp3')
-    pygame.mixer.music.play(0)
-
+    def background_music() :
+        plays the background music during game
+        pygame.mixer.music.play(-1) tells the music play to contiuously play
+        
+    def win_sound() : 
+        plays a congratulatory sound when game is complete
+        pygame.mixer.music.play(0) tells the music to only play once
+        
+    ## from Griffin ##
+    
+    def get_font_size() :
+    
+    def makePopUp() : 
+      
+'''
 def get_key(key):
+    
     switcher = {
         pygame.K_1: 1,
         pygame.K_2: 2,
@@ -28,6 +40,29 @@ def get_key(key):
         pygame.K_9: 9,
     }
     return switcher.get(key, None)
+
+def set_time(sec):
+    seconds = sec % 60
+    minutes = sec // 60
+    current_time = str(minutes) + ":" + (str(seconds) if seconds > 9 else "0" + str(seconds))
+    return current_time
+
+def background_music():
+    #load the music from my files
+    pygame.mixer.music.load('music/lofi_falling.mp3')
+    #set the volume so it doesnt blast anyones ear drums
+    pygame.mixer.music.set_volume(.05)
+    # tell it to play continuously
+    pygame.mixer.music.play(-1)
+
+def win_sound():
+    #load the music from my files
+    pygame.mixer.music.load('music/congratulations-post-malone.mp3')
+    #set the volume so it doesnt blast anyones ear drums
+    pygame.mixer.music.set_volume(0.4)
+    # tell it to play once
+    pygame.mixer.music.play(0)
+
 
 def get_font_size(text, font_name, pixel_size):
     """This returns the "font size" necessary to fit a letter in an image
@@ -108,7 +143,7 @@ def makePopUp(content,**kwargs):
     return image
     
     
-## TEST POP UP ##
+## TEST POP UP BY RUNNING python3 utilities.py##
 if __name__=='__main__':
     content = [
         {"text":" ",'font_size':20,'align':'left','color':'white'},
