@@ -1,5 +1,4 @@
 import pygame
-
 """ 
 class Tile:
     sets up each individual with their respective values centered within each box
@@ -12,22 +11,30 @@ functions within the Tile class :
         user presses enter to peramanately place that value in the box and the color of the number changes to white
         also draws a red rectangle when the user clicks on a single tile
     
-    def set():
+    def set() :
         sets the value into the chosen tile
         
-    def set_temp():
+    def set_temp() :
         allows the user to set a temporary value in the selected tile
 """
 
+def draw_rect_alpha(surface, color, rect):
+    shape_surf = pygame.Surface(pygame.Rect(rect).size, pygame.SRCALPHA)
+    pygame.draw.rect(shape_surf, color, shape_surf.get_rect())
+    surface.blit(shape_surf, rect)
+    
 class Tile:
+    # set the row and column to 9 x 9
     row = 9
     col = 9
+    # set up some colors 
     GRAY = (128, 128, 128)
     BLACK = (0, 0, 0)
     GREEN = (10, 246, 165)
     WHITE = (255, 255, 255)
+    HIGHLIGHT = pygame.Color(0,255, 140, 40)
 
-    def __init__(self, value, row, col, width, height):
+    def __init__(self, value, row, col, width, height, display):
         self.value = value
         self.temp = 0
         self.row = row
@@ -35,6 +42,8 @@ class Tile:
         self.width = width
         self.height = height
         self.selected = False
+        self.highlighted = False
+        self.display = display
 
     def draw(self, box):
         font = pygame.font.Font("fonts/Futura.ttf", 26)
@@ -48,9 +57,13 @@ class Tile:
             text = font.render(str(self.temp), 1, self.GRAY)
             box.blit(text, (x + 3, y + 3))
         elif self.value != 0:
-            # permanately sets the value in the center of the tile 
+            # sets the value in the center of the tile 
             text = font.render(str(self.value), 1, self.WHITE)
             box.blit(text, (x + (space / 2 - text.get_width() / 2), y + (space / 2 - text.get_height() / 2)))
+            
+        if self.highlighted:
+            # highlights the row and col of the selected item 
+            draw_rect_alpha(self.display, self.HIGHLIGHT, (x, y, space, space))
             
         if self.selected:
             # draws a rectangle around the selected tile
