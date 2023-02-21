@@ -74,7 +74,7 @@ class Play:
                 self.tiles[i][j].draw(box)
     
     def check_correct(self, row, col, num):
-        print(len(self.grid.get_sol()))
+        #print(len(self.grid.get_sol()))
         return self.grid.solution[row][col] == num
     
     def select(self, row, col):
@@ -139,9 +139,9 @@ class Play:
             for j in range(9):
                 #print(self.tiles[i][j])
                 if self.tiles[i][j] == 0:
-                    print("blank T")
+                    #print("blank T")
                     return True 
-        print("blank F")               
+        #print("blank F")               
         return False
     
     def check_solution(self):
@@ -149,8 +149,8 @@ class Play:
         for i in range(9):
             for j in range(9):
                 if self.grid.grid[i][j] != self.tiles[i][j].value:
-                    print("solution T")
+                    #print("solution T")
                     return True 
-        print("solution F")               
+        #print("solution F")               
         return False        
     
