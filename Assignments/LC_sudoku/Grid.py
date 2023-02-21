@@ -52,7 +52,7 @@ class Grid:
         self.solution = copy.deepcopy(self.grid)
         print(self.solution)
         # sets the number of tiles to leave blank
-        self.delete_items(2)
+        self.delete_items(32)
         
     def get_sol(self):
         return self.solution
