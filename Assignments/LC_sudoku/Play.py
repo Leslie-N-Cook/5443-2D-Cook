@@ -41,7 +41,7 @@ class Play:
         self.row = 9
         self.col = 9
         self.display = display
-        #list comprehension
+        #list comprehension # call Tile class to 
         self.tiles = [[Tile(self.grid.grid[i][j], i, j, width, height, self.display) for j in range(9)] for i in range(9)]
         self.width = width
         self.height = height
@@ -73,6 +73,9 @@ class Play:
             for j in range(9):
                 self.tiles[i][j].draw(box)
     
+    def check_correct(self, row, col, num):
+        print(len(self.grid.get_sol()))
+        return self.grid.solution[row][col] == num
     
     def select(self, row, col):
         #make sure the board is clear before selecting anything
