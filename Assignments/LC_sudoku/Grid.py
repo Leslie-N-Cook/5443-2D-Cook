@@ -1,4 +1,4 @@
-rom random import randint
+from random import randint
 """
 class Grid 
      builds a 9x9 game board layout in the pygame window
