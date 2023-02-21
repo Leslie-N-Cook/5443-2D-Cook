@@ -1,7 +1,7 @@
-from random import randint
+rom random import randint
 """
 class Grid 
-     builds a 9x9 grid layout in the pygame window
+     builds a 9x9 game board layout in the pygame window
      fills the grid with randomly generated values 1-9 for the sudoku game
      
 functions within in the Grid class:
@@ -46,7 +46,8 @@ class Grid:
 
     def build_grid(self):
         self.fill_tiles()
-        self.delete_items(32) # sets the number of tiles to leave blank
+        # sets the number of tiles to leave blank
+        self.delete_items(2)
 
     def fill_tiles(self):
         tag = [False for _ in range(9)]
@@ -87,27 +88,35 @@ class Grid:
             if self.OK_to_fill(row, col, num):
                 self.grid[row][col] = num
                 if self.solve():
+                    print("solve T")
                     return True
                 self.grid[row][col] = 0
+        print("solve F")        
         return False
 
     def row_OK(self, row, num):
         for i in range(9):
             if self.grid[row][i] == num:
+                #print("row_OK F")
                 return False
+        #print("row_OK T")
         return True
 
     def col_OK(self, col, num):
         for i in range(9):
             if self.grid[i][col] == num:
+                #print("col_OK F")
                 return False
+        #print("col_OK T")    
         return True
 
     def mid_tiles_OK(self, row, col, num):
         for i in range(3):
             for j in range(3):
                 if self.grid[row + i][col + j] == num:
+                    #print("mid_tiles_OK F")
                     return False 
+        #print("mid_tiles_OK T")
         return True
 
     def OK_to_fill(self, row, col, num):
