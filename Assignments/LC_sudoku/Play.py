@@ -1,7 +1,7 @@
 import pygame
 from Grid import Grid
 from Tile import Tile
-import utilities
+
 """  
 class Play :
     sets up the game for the user to play sudoku
@@ -35,16 +35,19 @@ functions within the Play class :
 """
 
 class Play:
-    def __init__(self, width, height):
+    def __init__(self, width, height, display):
         
         self.grid = Grid() #call Grid class 
         self.row = 9
         self.col = 9
-        self.tiles = [[Tile(self.grid.grid[i][j], i, j, width, height) for j in range(9)] for i in range(9)]
+        self.display = display
+        #list comprehension
+        self.tiles = [[Tile(self.grid.grid[i][j], i, j, width, height, self.display) for j in range(9)] for i in range(9)]
         self.width = width
         self.height = height
         self.selected = None
-        
+        self.highlighted = None
+ 
     def location(self, value):
         row, col = self.selected
         self.tiles[row][col].set(value)
@@ -54,11 +57,14 @@ class Play:
         self.tiles[row][col].set_temp(value)
         
     def draw(self, box):
+        #gets the amount of space needed for a 9x9 grid to line up correctly 
         space = self.width / 9 
         for i in range(self.row + 1):
+            # tells the game to draw a thickerline every 3rd row/col
             if i % 3 == 0 and i != 0:
                 thick = 3
             else:
+            #otherwise thickness is set to 1
                 thick = 1
             pygame.draw.line(box, (255, 255, 255), (0, i * space), (self.width, i * space), thick)
             pygame.draw.line(box, (255, 255, 255), (i * space, 0), (i * space, self.height), thick)
@@ -66,26 +72,60 @@ class Play:
         for i in range(9):
             for j in range(9):
                 self.tiles[i][j].draw(box)
-                
+    
+    
     def select(self, row, col):
+        #make sure the board is clear before selecting anything
+        self.clear_board()
+        #cast row and col as integers
+        row, col = int(row), int(col)
+        #set selected to True
+        self.tiles[row][col].selected = True
+        # set the value of selected the same as (row, col)
+        self.selected = (row, col)
+        # highlihgt the entire row 
+        self.highlightRow(row)
+        # highlight the entire col
+        self.highlightCol(col)
+        
+    def clear_board(self):
         for i in range(9):
             for j in range(9):
+                #set selected and highlighted to False
                 self.tiles[i][j].selected = False
-        row, col = int(row), int(col)
-        self.tiles[row][col].selected = True
-        self.selected = (row, col)
+                self.tiles[i][j].highlighted = False
         
+    def highlightRow(self, row):
+        for j in range(9):
+            #print(int(row))
+            self.tiles[int(row)][j].highlighted = True
+        
+    def highlightCol(self, col):
+        for i in range(9):
+            #print(int(col))
+            self.tiles[i][int(col)].highlighted = True
+        
+    # def debug(self):
+    #     for i in range(9):
+    #         for j in range(9):
+    #             s = self.tiles[i][j].selected
+    #             h = self.tiles[i][j].highlighted
+    #             print(f"{s},{h}",end = " ")
+    #         print()
+                
     def clear(self):
         row, col = self.selected
+        # clear the values to set and set_temp to 0
         self.tiles[row][col].set(0)
         self.tiles[row][col].set_temp(0)
         
     def click(self, position):
+        # get the position when clicked
         if position[0] < self.width and position[1] < self.height:
             space = self.width / 9
             x = position[0] // space
             y = position[1] // space
-            # print(x,y)
+            #print(x,y)
             return (y, x)
         else:
             return None
@@ -94,19 +134,20 @@ class Play:
         #self.grid.find_blank()
         for i in range(9):
             for j in range(9):
+                #print(self.tiles[i][j])
                 if self.tiles[i][j] == 0:
-                    #print("blank T")
-                    return True
-        #print("blank F")        
+                    print("blank T")
+                    return True 
+        print("blank F")               
         return False
     
     def check_solution(self):
         self.grid.solve()
         for i in range(9):
             for j in range(9):
-                if self.grid.grid[i][j] == self.tiles[i][j].value:
-                    #print("solve T")
-                    return True
-        #print("solve F")        
+                if self.grid.grid[i][j] != self.tiles[i][j].value:
+                    print("solution T")
+                    return True 
+        print("solution F")               
         return False        
     
