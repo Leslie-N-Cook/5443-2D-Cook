@@ -1,4 +1,6 @@
 from random import randint
+import copy
+from rich import print
 """
 class Grid 
      builds a 9x9 game board layout in the pygame window
@@ -44,11 +46,17 @@ class Grid:
         self.grid = [[0] * 9 for _ in range(9)]
         self.build_grid()
 
+
     def build_grid(self):
         self.fill_tiles()
+        self.solution = copy.deepcopy(self.grid)
+        print(self.solution)
         # sets the number of tiles to leave blank
-        self.delete_items(32)
-
+        self.delete_items(2)
+        
+    def get_sol(self):
+        return self.solution
+        
     def fill_tiles(self):
         tag = [False for _ in range(9)]
         blank = self.find_blank()
@@ -82,11 +90,13 @@ class Grid:
     def solve(self):
         blank = self.find_blank()
         if blank is None:
+            print("solve blank T")
             return True
         row, col = blank[0], blank[1]
         for num in range(1,10):
             if self.OK_to_fill(row, col, num):
                 self.grid[row][col] = num
+                #recursive call to solve
                 if self.solve():
                     print("solve T")
                     return True
