@@ -12,7 +12,7 @@ def draw_rect_alpha() :
     makes a transparent color filled rectangle 
 
 class Tile:
-    sets up each individual with their respective values centered within each box
+    sets up the user interactive graphics for the game
 
 functions within the Tile class : 
     def __init__():
