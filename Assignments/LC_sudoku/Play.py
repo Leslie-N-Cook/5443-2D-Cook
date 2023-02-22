@@ -55,11 +55,13 @@ class Play:
         self.col = 9 #numer of columns
         self.display = display
         #list comprehension # call Tile class in a list with parameters of the called from Grid, i(row),j(column), width,height (of each individual tile), dislpaly for j(columns) from 0 - 8, for i(rows) from 0-8
-        self.tiles = [[Tile(self.grid.grid[i][j], i, j, width, height, self.display) for j in range(9)] for i in range(9)]
+        self.tiles = [[Tile(self.grid.grid[i][j], i, j, width, height, self.display) 
+                       for j in range(9)] 
+                        for i in range(9)]
         self.width = width # width of the game board
         self.height = height # height of the game board
         self.selected = None # set selected to None
-        self.highlighted = None # set highlighted to none
+        self.highlighted = None # set highlighted to None
  
     def location(self, value):
         # get the location of the row and col selected
