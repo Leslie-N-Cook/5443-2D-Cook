@@ -33,6 +33,9 @@ functions within the Play class :
     def check_correct() : 
         returns true if the number in the grid is correct with the solution of the game
         
+    def check_correct() :
+        gets the solution for the sudoku grid from the Grid class
+        
     def select():
         sets a selected tile to True for game play
         
