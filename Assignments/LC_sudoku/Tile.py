@@ -15,6 +15,8 @@ class Tile:
     sets up each individual with their respective values centered within each box
 
 functions within the Tile class : 
+    def __init__():
+        init method lets the the Grid class initialize its objects attributes
 
     def draw() :
         allows the user to input values in each individual tile
