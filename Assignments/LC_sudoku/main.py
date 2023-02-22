@@ -6,7 +6,6 @@
 ###########################################################
 
 import pygame
-import sys
 import time
 import utilities
 from Play import Play
@@ -38,8 +37,12 @@ def end_game(gameTime):
     image.save(f"popup.png")
 
 def draw_screen(window, play, time):
+    # this fill the background of the game in black
+    # overlays texts that explains how to play the game 
+    # and shows a game clock for the user
     window.fill((0, 0, 0))
     font = pygame.font.Font("fonts/Futura.ttf", 32)
+    # call utilities.set_time to set the clock in the game  
     text = font.render("Clock " + utilities.set_time(time), 1,(0,255,255))
     window.blit(text, (680, 400))
     font = pygame.font.Font("fonts/Futura.ttf", 28)
@@ -56,7 +59,7 @@ def draw_screen(window, play, time):
     text = font.render("GAME PLAY", 1, (255, 0, 255))
     window.blit(text, (540+150,245))
     font = pygame.font.Font("fonts/Futura.ttf", 18)
-    text = font.render("Select the display to play a value", 1, (127, 0, 255))
+    text = font.render("Select a blank tile to play a value", 1, (127, 0, 255))
     window.blit(text, (540+30,280))
     text = font.render("Press ENTER to set the value in the display", 1, (0, 0, 255))
     window.blit(text, (540+30,300))
