@@ -70,7 +70,7 @@ def win_sound():
     #load the music from my files
     pygame.mixer.music.load('music/congratulations-post-malone.mp3')
     #set the volume so it doesnt blast anyones ear drums
-    pygame.mixer.music.set_volume(0.4)
+    pygame.mixer.music.set_volume(0.3)
     # tell it to play once
     pygame.mixer.music.play(0)
 
