@@ -1,3 +1,14 @@
+#############################################################
+# Leslie Cook
+# Sudoku Pygame
+# 5443 - 2D gaming
+# Griffin - Spring 23
+# This Utilities template contains the addtional 
+# functionalitites of the game like getting keyboard input
+# setting up and formatting the clock/timer,
+# playing background music and winning sounds, 
+# and a popup generator created by Dr. G
+#############################################################
 import pygame
 from PIL import Image, ImageDraw, ImageFont
 '''
@@ -27,8 +38,8 @@ functions in utilities :
       
 '''
 def get_key(key):
-    
-    switcher = {
+    #switch case for keybord input
+    switch = {
         pygame.K_1: 1,
         pygame.K_2: 2,
         pygame.K_3: 3,
@@ -39,7 +50,7 @@ def get_key(key):
         pygame.K_8: 8,
         pygame.K_9: 9,
     }
-    return switcher.get(key, None)
+    return switch.get(key, None)
 
 def set_time(sec):
     seconds = sec % 60
@@ -128,7 +139,7 @@ def makePopUp(content,**kwargs):
             color = "black"
         else:
             color = line['color']     
-        
+
         x = border_size
         
         if line['align'] == 'center':
