@@ -1,3 +1,12 @@
+#############################################################
+# Leslie Cook
+# Sudoku Pygame
+# 5443 - 2D gaming
+# Griffin - Spring 23
+# This Grid class contains all of the logic to set up
+# the sudoku game board with values 1-9 exactly once
+# in each row, column and 3x3 block 
+#############################################################
 from random import randint
 import copy
 from rich import print
@@ -24,14 +33,14 @@ functions within in the Grid class:
         solves the sudoku grid before choosing which tiles to leave blank
         
     def row_OK() :
-        checks that all outter rows don't have the same value twice
+        checks that all  rows don't have the same value twice
         
     def col_OK() : 
-        checks that all outter columns don't have the same value twice
+        checks that all columns don't have the same value twice
         
     def mid_tiles_OK() :
-        checks that all inner tiles don't have the same value twice 
-        in each row adn column
+        checks that all 3x3 inner grids don't have the same value twice 
+        in each row and column
     
     def OK_to_fill() : 
         after checking that all rows and columns don't have the same values 
@@ -50,7 +59,7 @@ class Grid:
     def build_grid(self):
         self.fill_tiles()
         self.solution = copy.deepcopy(self.grid)
-        print(self.solution)
+        #print(self.solution)
         # sets the number of tiles to leave blank
         self.delete_items(32)
         
@@ -90,7 +99,7 @@ class Grid:
     def solve(self):
         blank = self.find_blank()
         if blank is None:
-            print("solve blank T")
+            #print("solve blank T")
             return True
         row, col = blank[0], blank[1]
         for num in range(1,10):
@@ -98,10 +107,10 @@ class Grid:
                 self.grid[row][col] = num
                 #recursive call to solve
                 if self.solve():
-                    print("solve T")
+                    #print("solve T")
                     return True
                 self.grid[row][col] = 0
-        print("solve F")        
+        #print("solve F")        
         return False
 
     def row_OK(self, row, num):
