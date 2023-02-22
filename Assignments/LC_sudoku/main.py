@@ -114,10 +114,10 @@ while running:
                 if play.check_blank_tile() is False and play.check_solution() is True:
                     pygame.mixer.Channel(0).set_volume(0.15)
                     pygame.mixer.Channel(0).play(pygame.mixer.Sound('music/success-chime.mp3'))
-                    print(x,y,pressed)
+                    #print(x,y,pressed)
                     if not play.check_correct(x,y,pressed):
-                        pygame.mixer.Channel(1).set_volume(0.5)
-                        pygame.mixer.Channel(1).play(pygame.mixer.Sound('music/f-cked-up_.mp3'))
+                        pygame.mixer.Channel(0).set_volume(0.3)
+                        pygame.mixer.Channel(0).play(pygame.mixer.Sound('music/f-cked-up_.mp3'))
                     
                 # when you've solved the game correctly
                 if play.check_blank_tile() is False and play.check_solution() is False:
@@ -132,7 +132,6 @@ while running:
                     
                     # tell game to wait 10 seconds before reset
                     pygame.time.wait(10000)
-                    
      ###### this will automatically setup a new game ######
                     #restart background music called from utillites
                     utilities.background_music()
