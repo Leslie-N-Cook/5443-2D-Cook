@@ -1,3 +1,11 @@
+#############################################################
+# Leslie Cook
+# Sudoku Pygame
+# 5443 - 2D gaming
+# Griffin - Spring 23
+# This Tile class contains functions for user interactive 
+# graphics while playing the sudoku game
+#############################################################
 import pygame
 """ 
 def draw_rect_alpha() : 
@@ -73,7 +81,9 @@ class Tile:
             pygame.draw.rect(box, self.GREEN, (x, y, space, space), 3)
             
     def set(self, value):
+        # permanately set the user input value 
         self.value = value
         
     def set_temp(self, value):
+        #temporarily set the user input value
         self.temp = value
