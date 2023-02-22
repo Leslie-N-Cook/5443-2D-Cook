@@ -58,6 +58,8 @@ class Tile:
 
     def draw(self, box):
         font = pygame.font.Font("fonts/Futura.ttf", 26)
+        # space is equal to the width o the game board / 9
+        # this is to evenly space everything in a 9x9 grid
         space = self.width / 9
         
         x = self.col * space
