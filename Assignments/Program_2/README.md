@@ -34,7 +34,7 @@
     - `pip install -r requirements.txt`
     - `pip3 install -r requirements.txt`
 
-- Example Command:
+- Example Command to run the game:
     - `python ArtofWar.py`
     - `python3 ArtofWar.py`
 
