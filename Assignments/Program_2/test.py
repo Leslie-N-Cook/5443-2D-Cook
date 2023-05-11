@@ -415,7 +415,6 @@ while running:
                 # Reset the game
                 AOFW.resetGame()
                 utilities.background_music() 
-                
     if AOFW.right_health <= 0 or AOFW.left_health <= 0:
             # Draw the reset button and wait for the player to click it
             pygame.draw.rect(screen, (255, 0, 0), button_rect)
@@ -513,9 +512,9 @@ while running:
 
     ## Game Banner
     font = pygame.font.SysFont('Algerian',50)
-    text = font.render("Are You Not Entertained?", 1, AOFW.TAN)
+    # text = font.render("Are You Not Entertained?", 1, AOFW.TAN)
 
-    screen.blit(text, (screenWidth/3,70))
+    # screen.blit(text, (screenWidth/3,70))
 
     """
         Health Bar Stuff
