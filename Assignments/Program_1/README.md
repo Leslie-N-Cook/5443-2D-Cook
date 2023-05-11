@@ -16,8 +16,8 @@
 |   5   | Tile.py         | The class for the properties of each tile in the grid.|
 |   6   | utilitles.py    | Additional methods for game properites.               |
 |   7   | fonts           | Folder the fonts used in the game.                    |
-|   8   | music           | Folder with music and sounnd bytes used in the game.  |
-|   9   | screenshots     | Folder pictures of the game.                          |
+|   8   | music           | Folder with music and sounds used in the game.        |
+|   9   | screenshots     | Folder with pictures of the game.                     |
 
 
 ### Instructions
