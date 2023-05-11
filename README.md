@@ -4,3 +4,4 @@
 
 #### Image:
 <img src="Images/LC_headshot.png" width="300">
+<img src="Images/LCbw.png" width="300">
