@@ -32,6 +32,6 @@
 
 ### Screen Shots:
 
-<img src="Assignments/Program_1/screenshots/sudoku.png">
-<img src="Assignments/Program_1/screenshots/tileSelect.png">
-<img src="Assignments/Program_1/screenshots/popup.png">
+<img src="screenshots/sudoku.png">
+<img src="screenshots/tileSelect.png">
+<img src="screenshots/popup.png">
