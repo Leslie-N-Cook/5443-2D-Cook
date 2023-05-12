@@ -14,7 +14,7 @@
 |   3   | Play.py         | The class that handles the interactive game elements. |
 |   4   | requirements.txt| The file to load all requirements to run the game.    |
 |   5   | Tile.py         | The class for the properties of each tile in the grid.|
-|   6   | utilitles.py    | Additional methods for game properites.               |
+|   6   | utilities.py    | Additional methods for game properties.               |
 |   7   | fonts           | Folder the fonts used in the game.                    |
 |   8   | music           | Folder with music and sounds used in the game.        |
 |   9   | screenshots     | Folder with pictures of the game.                     |

@@ -7,7 +7,7 @@ The game uses the pygame library to render the game and handle the game logic. I
 
 ### How to play:
 - Press 'z' to zoom out for a full view of the level.
-- Use the arrow keys or 'awsd' keys to move the player around the map.
+- Use the arrow keys or 'wasd' keys to move the player around the map.
 - To start, walk over the buttons to select different players and weapons.
 - Use the space bar to open/close doors and to attack enemies.
 - Collect coins and kill enemies to increase your score.

@@ -6,9 +6,9 @@
 
 ### How to Play:
 - Player 1 uses the 'wasd' keys to move. Press 'd' to go forward and press 'a' to go backward. Press 'w' to jump and press 's' to duck.
-- Player 1 uses the Left SHIFT key to throw thier weapon at the other player.
+- Player 1 uses the Left SHIFT key to throw their weapon at the other player.
 - Player 2 uses the arrow keys to move. Press 'left arrow' to go forward and press 'right arrow' to go backward. Press 'up arrow' to jump and press 'down arrow' to duck.
-- Player 2 uses the Right SHIFT key to throw thier weapon at the other player.
+- Player 2 uses the Right SHIFT key to throw their weapon at the other player.
 
 
 ### Files

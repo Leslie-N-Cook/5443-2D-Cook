@@ -2,7 +2,7 @@
 ### Leslie Cook
 ### Description:
 
-- This is a multiplayer game where you can play with up to 10 people. The game is a space battle where you shoot other players to gain points and shoot asteroids to gain extra health. Avoid collisions with ateroids and other players bullets to earn the highest score.
+- This is a multiplayer game where you can play with up to 10 people. The game is a space battle where you shoot other players to gain points and shoot asteroids to gain extra health. Avoid collisions with asteroids and other players bullets to earn the highest score.
 
 ### Files
 
@@ -12,7 +12,7 @@
 |   2   | Background.py   | The class for the Background of the game.          |
 |   3   | BaseSprite.py   | The class to process Sprites for the game.         |
 |   4   | Bullet.py       | The class for the ships bullets.                   |
-|   5   | Comms.py        | The class for communicaitons with RabbitMQ server. |
+|   5   | Comms.py        | The class for communications with RabbitMQ server. |
 |   6   | GameDriver.py   | The class that handles all game functionality.     |
 |   7   | HealthBar.py    | The class that shows the Health of your ship.      |
 |   8   | main.py         | The main driver that launches the game.            |
