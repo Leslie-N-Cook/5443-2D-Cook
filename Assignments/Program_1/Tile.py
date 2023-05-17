@@ -18,9 +18,10 @@ def draw_rect_alpha(surface, color, rect):
     pygame.draw.rect(shape_surf, color, shape_surf.get_rect())
     surface.blit(shape_surf, rect)
     
+
 class Tile:
-        """
-        The Tile class sets up the user interactive graphics for the game
+    """
+    The Tile class sets up the user interactive graphics for the game
     Attributes
     ----------
         self.value : value
@@ -66,6 +67,7 @@ class Tile:
             
         def set_temp() :
             allows the user to set a temporary value in the selected tile
+    
     """
     # set the row and column to 9 x 9
     row = 9
@@ -75,7 +77,7 @@ class Tile:
     BLACK = (0, 0, 0)
     GREEN = (10, 246, 165)
     WHITE = (255, 255, 255)
-    HIGHLIGHT = pygame.Color(0,255, 140, 40)
+    HIGHLIGHT = pygame.Color(0,255, 140, 75)
 
     def __init__(self, value, row, col, width, height, display):
         self.value = value

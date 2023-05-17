@@ -14,7 +14,7 @@ import copy
 from rich import print
 
 class Grid:
-        """
+    """
     The Grid class builds a 9x9 game board layout in the pygame window and fills the grid with randomly generated values 1-9 for the sudoku game
 
     Attributes
@@ -61,9 +61,8 @@ class Grid:
             more than once this function gives the OK to fill the tiles with 1-9 values
             
         def find_blank() : 
-            finds which tiles to leave blank 
-        
-    """
+            finds the blank tiles to leave empty for the user to play the game
+        """
     def __init__(self):
         self.grid = [[0] * 9 for _ in range(9)]
         self.build_grid()
