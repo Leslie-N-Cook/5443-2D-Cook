@@ -22,8 +22,30 @@ def draw_rect_alpha(surface, color, rect):
 class Tile:
     """
     The Tile class sets up the user interactive graphics for the game
+    
     Attributes
     ----------
+    
+        row : 9
+            number of rows in the game board
+        col : 9
+            number of columns in the game board
+       
+        GRAY : (128, 128, 128)
+            color of the temporary value in the tile
+            
+        BLACK : (0, 0, 0)
+            color of the background of the tile
+            
+        GREEN : (10, 246, 165)
+            color of the selected tile
+            
+        WHITE : (255, 255, 255)
+            color of the value in the tile
+            
+        HIGHLIGHT : pygame.Color(0, 255, 140, 75)
+            color of the highlighted row and column of the selected tile using alpha values to make it transparent
+            
         self.value : value
             The value entered by the user
 
@@ -60,7 +82,7 @@ class Tile:
             allows the user to input values in each individual tile
             sets a temporary value in gray at the top left of the tile box
             user presses enter to peramanately place that value in the box and the color of the number changes to white
-            also draws a red rectangle when the user clicks on a single tile
+            also draws a green rectangle when the user clicks on a single tile
         
         def set() :
             sets the value into the chosen tile
