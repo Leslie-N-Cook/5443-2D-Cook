@@ -1,3 +1,5 @@
 .*
+.cpython
 !.gitignore
-__pygache__
+__pycache__
+pycache
