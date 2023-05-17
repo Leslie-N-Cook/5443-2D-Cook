@@ -12,7 +12,8 @@
 import pygame
 from PIL import Image, ImageDraw, ImageFont
 '''
-Functions:
+Functions
+---------
 
     def get_key() :
         switch case function
