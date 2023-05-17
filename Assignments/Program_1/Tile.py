@@ -10,26 +10,8 @@ import pygame
 """ 
 def draw_rect_alpha() : 
     makes a transparent color filled rectangle 
-
-class Tile:
-    sets up the user interactive graphics for the game
-
-Methods: 
-    def __init__():
-        init method lets the the Tile class initialize its objects attributes
-
-    def draw() :
-        allows the user to input values in each individual tile
-        sets a temporary value in gray at the top left of the tile box
-        user presses enter to peramanately place that value in the box and the color of the number changes to white
-        also draws a red rectangle when the user clicks on a single tile
-    
-    def set() :
-        sets the value into the chosen tile
-        
-    def set_temp() :
-        allows the user to set a temporary value in the selected tile
 """
+
 
 def draw_rect_alpha(surface, color, rect):
     shape_surf = pygame.Surface(pygame.Rect(rect).size, pygame.SRCALPHA)
@@ -37,6 +19,54 @@ def draw_rect_alpha(surface, color, rect):
     surface.blit(shape_surf, rect)
     
 class Tile:
+        """
+        The Tile class sets up the user interactive graphics for the game
+    Attributes
+    ----------
+        self.value : value
+            The value entered by the user
+
+        self.temp : 0
+            a temporary place holder value
+
+        self.row : row
+            the row of the tile
+
+        self.col : col
+            the column if the tile
+
+        self.width : width
+            width of the grid
+
+        self.height : height
+            the height of the grid
+
+        self.selected : False
+            boolean initially sets a selected tile to false 
+
+        self.highlighted : False
+            boolean initially sets a highlighted tile to false
+
+        self.display : display
+            pygame display
+
+    Methods
+    ------- 
+        def __init__():
+            init method lets the the Tile class initialize its objects attributes
+
+        def draw() :
+            allows the user to input values in each individual tile
+            sets a temporary value in gray at the top left of the tile box
+            user presses enter to peramanately place that value in the box and the color of the number changes to white
+            also draws a red rectangle when the user clicks on a single tile
+        
+        def set() :
+            sets the value into the chosen tile
+            
+        def set_temp() :
+            allows the user to set a temporary value in the selected tile
+    """
     # set the row and column to 9 x 9
     row = 9
     col = 9

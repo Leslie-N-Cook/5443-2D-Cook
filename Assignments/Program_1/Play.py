@@ -12,47 +12,77 @@ import pygame
 from Grid import Grid
 from Tile import Tile
 
-"""  
-class Play :
-    sets up the game for the user to play sudoku
-    
-Methods : 
-    def __init__():
-        init method lets the the Play class initialize its objects attributes
 
-    def location(): 
-        gets the coordinates of a selected tile in order to set a value
-    
-    def temp_location():
-        gets the coordinates of the selected tile to store a temporarty value until the user chooses to set the value into the tile
-        
-    def draw():
-        uses pygame.draw.line to make horizontal and vertical lines that create the 9x9 gird layout
-        draws a thicker line every 3rd line thats drawn
-    
-    def check_correct() : 
-        returns true if the number in the grid is correct with the solution of the game
-        
-    def check_correct() :
-        gets the solution for the sudoku grid from the Grid class
-        
-    def select():
-        sets a selected tile to True for game play
-        
-    def clear():
-        allows user to clear the tile of input
-        
-    def click(): 
-        gets the position when the player click a button
-        
-    def check_blank_tile():
-        check for blank tiles in the game to know if game has been completed
-        
-    def check_solution():
-        checks the if the players solution is correct or not
-"""
 
 class Play:
+    """  
+    The Play class sets up the game for the user to play sudoku
+
+    Attributes
+    ----------
+        self.grid : Grid()
+            Call the Grid class
+        
+        self.row : 9
+            The numer of rows in Sudoku
+
+        self.col : 9 
+            The number of columns in Sudoku
+
+        self.display : display
+            pygame display 
+        
+        self.tiles : Tiles()
+            Calls the Tiles class
+        
+        self.width : width
+            The width of the sudoku board
+        
+        self.height : height
+            the height of the suoky board
+
+        self.selected : None
+            boolean if a tile is selected 
+
+        self.highlighted : None
+            boolean to hightlight the seleceted tile's row and columns
+
+    Methods
+    -------
+        def __init__():
+            init method lets the the Play class initialize its objects attributes
+
+        def location(): 
+            gets the coordinates of a selected tile in order to set a value
+        
+        def temp_location():
+            gets the coordinates of the selected tile to store a temporarty value until the user chooses to set the value into the tile
+            
+        def draw():
+            uses pygame.draw.line to make horizontal and vertical lines that create the 9x9 gird layout
+            draws a thicker line every 3rd line thats drawn
+        
+        def check_correct() : 
+            returns true if the number in the grid is correct with the solution of the game
+            
+        def check_correct() :
+            gets the solution for the sudoku grid from the Grid class
+            
+        def select():
+            sets a selected tile to True for game play
+            
+        def clear():
+            allows user to clear the tile of input
+            
+        def click(): 
+            gets the position when the player click a button
+            
+        def check_blank_tile():
+            check for blank tiles in the game to know if game has been completed
+            
+        def check_solution():
+            checks the if the players solution is correct or not
+    """
     def __init__(self, width, height, display):
         
         self.grid = Grid() #call Grid class 

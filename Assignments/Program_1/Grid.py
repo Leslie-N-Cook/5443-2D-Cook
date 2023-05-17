@@ -12,52 +12,58 @@
 from random import randint
 import copy
 from rich import print
-"""
-class Grid 
-     builds a 9x9 game board layout in the pygame window
-     fills the grid with randomly generated values 1-9 for the sudoku game
-     
-Methods :
-     def __init__():
-        init method lets the the Grid class initialize its objects attributes
-    
-     def build_grid() : 
-        fills each tile with 1-9 values
-        leaves 32 squares blank to play the game
-        
-     def get_sol() :
-     	gets a copy of the sudoku solution
-     
-     def fill_tiles() :
-        tags the tiles with their respective randomly generated values
-        checks that column and rows are okay to fill such values 
-    
-     def delete_items() : 
-        indexes all rows and columns with each 1-9 value
-        determines which tiles to to leave blank 
-        
-    def solve() : 
-        solves the sudoku grid before choosing which tiles to leave blank
-        
-    def row_OK() :
-        checks that all  rows don't have the same value twice
-        
-    def col_OK() : 
-        checks that all columns don't have the same value twice
-        
-    def mid_tiles_OK() :
-        checks that all 3x3 inner grids don't have the same value twice 
-        in each row and column
-    
-    def OK_to_fill() : 
-        after checking that all rows and columns don't have the same values 
-        more than once this function gives the OK to fill the tiles with 1-9 values
-        
-    def find_blank() : 
-        finds which tiles to leave blank 
-     
-"""
+
 class Grid:
+        """
+    The Grid class builds a 9x9 game board layout in the pygame window and fills the grid with randomly generated values 1-9 for the sudoku game
+
+    Attributes
+    ----------
+        self.grid : 
+        
+        self.build_grid() :
+
+    Methods 
+    -------
+        def __init__():
+            init method lets the the Grid class initialize its objects attributes
+        
+        def build_grid() : 
+            fills each tile with 1-9 values
+            leaves 32 squares blank to play the game
+            
+        def get_sol() :
+            gets a copy of the sudoku solution
+        
+        def fill_tiles() :
+            tags the tiles with their respective randomly generated values
+            checks that column and rows are okay to fill such values 
+        
+        def delete_items() : 
+            indexes all rows and columns with each 1-9 value
+            determines which tiles to to leave blank 
+            
+        def solve() : 
+            solves the sudoku grid before choosing which tiles to leave blank
+            
+        def row_OK() :
+            checks that all  rows don't have the same value twice
+            
+        def col_OK() : 
+            checks that all columns don't have the same value twice
+            
+        def mid_tiles_OK() :
+            checks that all 3x3 inner grids don't have the same value twice 
+            in each row and column
+        
+        def OK_to_fill() : 
+            after checking that all rows and columns don't have the same values 
+            more than once this function gives the OK to fill the tiles with 1-9 values
+            
+        def find_blank() : 
+            finds which tiles to leave blank 
+        
+    """
     def __init__(self):
         self.grid = [[0] * 9 for _ in range(9)]
         self.build_grid()

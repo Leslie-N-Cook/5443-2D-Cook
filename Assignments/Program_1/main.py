@@ -12,7 +12,7 @@ from Play import Play
 
 
 """
-Functions :
+Functions:
 
     def end_game() : 
         draws a popup called from utilities that generates a message
