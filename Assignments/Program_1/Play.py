@@ -16,7 +16,7 @@ from Tile import Tile
 class Play :
     sets up the game for the user to play sudoku
     
-functions within the Play class : 
+Methods : 
     def __init__():
         init method lets the the Play class initialize its objects attributes
 

@@ -14,7 +14,7 @@ def draw_rect_alpha() :
 class Tile:
     sets up the user interactive graphics for the game
 
-functions within the Tile class : 
+Methods: 
     def __init__():
         init method lets the the Tile class initialize its objects attributes
 

@@ -17,7 +17,7 @@ class Grid
      builds a 9x9 game board layout in the pygame window
      fills the grid with randomly generated values 1-9 for the sudoku game
      
-functions within in the Grid class:
+Methods :
      def __init__():
         init method lets the the Grid class initialize its objects attributes
     
